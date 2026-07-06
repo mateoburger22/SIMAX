@@ -1,8 +1,8 @@
 -- ============================================================================
--- 02-policies.sql  ·  Row Level Security (RLS) de Polytape
+-- 02-policies.sql  ·  Row Level Security (RLS) de SIMAX
 -- ----------------------------------------------------------------------------
--- Se corre SEGUNDO. RLS = seguridad a nivel de FILA: la base decide, fila por
--- fila, si el usuario que hace la consulta puede verla/modificarla.
+-- RLS = seguridad a nivel de FILA: la base decide, fila por fila, si el
+-- usuario que hace la consulta puede verla/modificarla.
 --
 -- IMPORTANTE: al activar RLS en una tabla, por defecto se NIEGA TODO. Recién
 -- las políticas (`policy`) abren accesos puntuales. Sin políticas, ni siquiera

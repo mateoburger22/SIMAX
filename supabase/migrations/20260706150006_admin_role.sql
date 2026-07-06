@@ -1,9 +1,9 @@
 -- ============================================================================
 -- 06-admin-role.sql  ·  Rol de administrador + políticas del panel de admin
 -- ----------------------------------------------------------------------------
--- Se corre DESPUÉS de 01..05. Agrega la noción de ADMIN al sistema:
+-- Agrega la noción de ADMIN al sistema:
 --
---   1. Columna `role` en profiles ('user' por defecto, 'admin' para Mateo).
+--   1. Columna `role` en profiles ('user' por defecto, 'admin' para el dueño).
 --   2. Función `is_admin()` que las políticas usan para preguntar "¿el que
 --      consulta es admin?".
 --   3. Políticas RLS nuevas: el admin puede ESCRIBIR el catálogo y VER/
@@ -17,10 +17,9 @@
 -- ----------------------------------------------------------------------------
 -- 1) Columna role. `check` restringe los valores posibles a nivel de base:
 --    nadie puede guardarse un rol inventado como 'superadmin'.
---    OJO: profiles NO tiene política de UPDATE sobre role para el propio
---    usuario... sí la tiene ("actualizar el propio"), así que un usuario
---    podría intentar auto-ascenderse con un UPDATE a su fila. Lo bloqueamos
---    con el trigger de más abajo (punto 4).
+--    OJO: profiles tiene política de UPDATE sobre la propia fila, así que un
+--    usuario podría intentar auto-ascenderse con un UPDATE. Lo bloqueamos con
+--    el trigger de más abajo (punto 4).
 -- ----------------------------------------------------------------------------
 alter table public.profiles
     add column if not exists role text not null default 'user'
@@ -131,9 +130,9 @@ create trigger protect_profiles_role
 revoke execute on function public.protect_role_column() from anon, authenticated, public;
 
 -- ----------------------------------------------------------------------------
--- 5) Nombrar al primer admin (se hace UNA vez, a mano):
+-- 5) Nombrar al primer admin (se hace UNA vez, a mano, después de registrarte):
 --
 --    update public.profiles
 --    set role = 'admin'
---    where id = (select id from auth.users where email = 'mateoburger22@gmail.com');
+--    where id = (select id from auth.users where email = 'TU-EMAIL-ACA');
 -- ----------------------------------------------------------------------------

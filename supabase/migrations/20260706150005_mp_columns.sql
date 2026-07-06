@@ -1,8 +1,8 @@
 -- ============================================================================
 -- 05-mp-columns.sql  ·  Columnas de Mercado Pago en `orders`
 -- ----------------------------------------------------------------------------
--- Se corre DESPUÉS del schema base. Agrega dos referencias que devuelve
--- Mercado Pago cuando integramos Checkout Pro:
+-- Agrega dos referencias que devuelve Mercado Pago cuando integramos
+-- Checkout Pro:
 --
 --   · mp_preference_id -> id de la "preferencia" (el pedido de pago que
 --     creamos ANTES de mandar al usuario a pagar). Nos sirve para rastrear
@@ -11,7 +11,7 @@
 --     Lo guardamos cuando la orden pasa a 'pagada' (comprobante contra MP).
 --
 -- Ambas son `text` y aceptan null: una orden recién creada todavía no tiene
--- pago aprobado. Usamos `if not exists` para poder re-correr sin romper.
+-- pago aprobado.
 -- ============================================================================
 
 alter table public.orders

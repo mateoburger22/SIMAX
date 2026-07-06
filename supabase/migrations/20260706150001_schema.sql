@@ -1,7 +1,6 @@
 -- ============================================================================
--- 01-schema.sql  ·  Estructura de tablas de Polytape
+-- 01-schema.sql  ·  Estructura de tablas de SIMAX
 -- ----------------------------------------------------------------------------
--- Se corre PRIMERO, en el SQL Editor de Supabase (proyecto > SQL Editor > New).
 -- Supabase ya trae el esquema `auth` con la tabla auth.users (la maneja el
 -- propio sistema de autenticación). Nosotros creamos las tablas de NEGOCIO en
 -- el esquema `public` y las vinculamos a auth.users por el id del usuario.

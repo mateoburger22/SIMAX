@@ -1,9 +1,9 @@
 -- ============================================================================
 -- 03-trigger.sql  ·  Crear el perfil automáticamente al registrarse
 -- ----------------------------------------------------------------------------
--- Se corre TERCERO. Cuando alguien se registra, Supabase inserta una fila en
--- auth.users. Queremos que, en ese mismo momento, se cree su fila en
--- public.profiles. Lo hacemos con un TRIGGER sobre auth.users.
+-- Cuando alguien se registra, Supabase inserta una fila en auth.users.
+-- Queremos que, en ese mismo momento, se cree su fila en public.profiles.
+-- Lo hacemos con un TRIGGER sobre auth.users.
 --
 -- `security definer` -> la función corre con los permisos de quien la creó
 -- (vos, dueño), no con los del usuario que se registra. Necesario porque el

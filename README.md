@@ -74,7 +74,9 @@ SIMAX/
 │   ├── adminAuth.js              # helper: ¿la sesión es de un admin?
 │   └── productos.js              # data access del catálogo
 ├── data/productos.js             # metadata de UI (líneas) + formatPrice
-├── docs/supabase/                # SQL versionado: schema, RLS, triggers, seeds
+├── supabase/
+│   ├── config.toml                # config del proyecto (Supabase CLI)
+│   └── migrations/                # SQL versionado: schema, RLS, triggers, seeds
 ├── tests/                        # tests unitarios (Vitest)
 ├── proxy.js                      # middleware de Next 16: refresca la sesión Supabase
 └── .github/
