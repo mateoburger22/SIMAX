@@ -1,0 +1,40 @@
+.resumen {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+}
+
+.statGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--space-sm);
+}
+
+.statCard {
+    background: var(--color-white);
+    border: 1px solid var(--color-gray-300);
+    border-top: 4px solid var(--color-yellow);
+    padding: var(--space-md);
+}
+
+.statValue {
+    font-family: var(--font-display);
+    font-size: var(--fs-xl);
+    font-weight: 700;
+    color: var(--color-black);
+    line-height: 1;
+}
+
+.statLabel {
+    margin-top: var(--space-2xs);
+    font-size: var(--fs-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-gray-500);
+}
+
+.quickActions {
+    display: flex;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+}

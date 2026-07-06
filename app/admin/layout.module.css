@@ -1,0 +1,48 @@
+.pageHeader {
+    background: var(--color-white);
+    padding: var(--space-xl) var(--space-sm) 0;
+    border-bottom: 1px solid var(--color-gray-300);
+}
+
+.pageHeaderInner {
+    max-width: var(--container);
+    margin: 0 auto;
+}
+
+.pageHeader h1 {
+    margin-bottom: var(--space-md);
+}
+
+/* Solapas: Resumen / Productos / Pedidos */
+.tabs ul {
+    display: flex;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+}
+
+.tab,
+.tabActive {
+    display: inline-block;
+    padding: var(--space-xs) 0;
+    font-weight: 600;
+    font-size: var(--fs-sm);
+    color: var(--color-gray-500);
+    border-bottom: 3px solid transparent;
+    transition: color var(--transition), border-color var(--transition);
+}
+
+.tab:hover {
+    color: var(--color-black);
+}
+
+.tabActive {
+    color: var(--color-black);
+    border-bottom-color: var(--color-yellow);
+}
+
+.content {
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: var(--space-lg) var(--space-sm) var(--space-xl);
+    width: 100%;
+}

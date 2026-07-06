@@ -1,0 +1,112 @@
+.wrap {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+.toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+}
+
+.tableWrap {
+    overflow-x: auto;
+    background: var(--color-white);
+    border: 1px solid var(--color-gray-300);
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--fs-sm);
+}
+
+.table th {
+    text-align: left;
+    font-size: var(--fs-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-gray-500);
+    background: var(--color-gray-100);
+    padding: var(--space-xs) var(--space-sm);
+    white-space: nowrap;
+}
+
+.table td {
+    padding: var(--space-xs) var(--space-sm);
+    border-top: 1px solid var(--color-gray-300);
+    vertical-align: middle;
+}
+
+.right {
+    text-align: right;
+}
+
+.productCell {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    min-width: 220px;
+}
+
+.thumb {
+    object-fit: contain;
+    background: var(--color-gray-100);
+    flex-shrink: 0;
+}
+
+.productName {
+    font-weight: 500;
+}
+
+.sku {
+    font-family: monospace;
+    font-size: var(--fs-xs);
+    color: var(--color-gray-700);
+    white-space: nowrap;
+}
+
+.price {
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.actions {
+    display: flex;
+    gap: var(--space-sm);
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.editLink {
+    color: var(--color-yellow-dark);
+    font-weight: 600;
+}
+
+.editLink:hover {
+    text-decoration: underline;
+}
+
+.deleteBtn {
+    color: #c0392b;
+    font-weight: 600;
+    font-size: var(--fs-sm);
+}
+
+.deleteBtn:hover {
+    text-decoration: underline;
+}
+
+/* Aviso de error de una acción (ej: no se pudo eliminar) */
+.errorBanner {
+    background: #fdecea;
+    border: 1px solid #c0392b;
+    color: #922b21;
+    padding: var(--space-xs) var(--space-sm);
+    font-size: var(--fs-sm);
+    font-weight: 500;
+    margin-bottom: var(--space-md);
+}

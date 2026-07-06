@@ -1,0 +1,111 @@
+.confirmation {
+    padding: var(--space-2xl) var(--space-sm);
+    background:
+        repeating-linear-gradient(
+            135deg,
+            transparent 0 60px,
+            rgba(255, 198, 0, 0.04) 60px 120px
+        ),
+        var(--color-gray-100);
+    min-height: 60vh;
+}
+
+.inner {
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+.confirmation h1 {
+    margin-top: var(--space-xs);
+    margin-bottom: var(--space-md);
+}
+
+.intro {
+    font-size: var(--fs-md);
+    margin-bottom: var(--space-lg);
+}
+
+.intro strong {
+    color: var(--color-yellow-dark);
+}
+
+.intro em {
+    font-style: normal;
+    text-transform: uppercase;
+    font-size: var(--fs-xs);
+    letter-spacing: 0.05em;
+    background: var(--color-yellow);
+    color: var(--color-black);
+    padding: 0.125rem 0.5rem;
+    margin-left: var(--space-2xs);
+}
+
+.card {
+    background: var(--color-white);
+    border: 1px solid var(--color-gray-300);
+    border-top: 4px solid var(--color-yellow);
+    padding: var(--space-md);
+    margin-bottom: var(--space-md);
+}
+
+.card h2 {
+    font-size: var(--fs-md);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--space-sm);
+}
+
+.items {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-md);
+}
+
+.item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: var(--space-md);
+    padding-bottom: var(--space-sm);
+    border-bottom: 1px solid var(--color-gray-300);
+}
+
+.item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.itemName {
+    font-weight: 600;
+}
+
+.itemMeta {
+    font-size: var(--fs-xs);
+    color: var(--color-gray-500);
+}
+
+.itemPrice {
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 2px solid var(--color-black);
+    padding-top: var(--space-sm);
+}
+
+.total strong {
+    font-family: var(--font-display);
+    font-size: var(--fs-xl);
+}
+
+.actions {
+    display: flex;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+    margin-top: var(--space-lg);
+}

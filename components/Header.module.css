@@ -1,0 +1,145 @@
+.siteHeader {
+    background: var(--color-black);
+    border-bottom: 1px solid var(--color-gray-700);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+}
+
+.headerInner {
+    width: 100%;
+    height: var(--header-height);
+    padding: 0 var(--space-md) 0 var(--header-logo-offset);
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.logo img {
+    width: var(--header-logo-width);
+    height: auto;
+    max-height: 100%;
+    display: block;
+}
+
+.mainNav {
+    display: none;
+    margin-left: auto;
+}
+
+.mainNav ul {
+    display: flex;
+    gap: var(--space-md);
+}
+
+.mainNav a {
+    display: inline-block;
+    font-weight: 500;
+    color: var(--color-white);
+    padding: var(--space-2xs) 0;
+    border-bottom: 2px solid transparent;
+    transition: border-color var(--transition), color var(--transition);
+}
+
+.mainNav a:hover,
+.mainNav a.active {
+    border-bottom-color: var(--color-yellow);
+}
+
+@media (min-width: 641px) {
+    .mainNav {
+        display: block;
+    }
+}
+
+/* Bloque de acciones a la derecha: auth + carrito + hamburguesa.
+   margin-left: auto lo empuja a la derecha cuando el nav está oculto
+   (en mobile); en desktop el auto del nav ya absorbió el espacio libre. */
+.headerActions {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+}
+
+/* --- Botón hamburguesa (solo mobile) --- */
+
+.menuBtn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    width: 40px;
+    height: 40px;
+}
+
+.menuBtn span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--color-white);
+    transition: transform var(--transition), opacity var(--transition);
+}
+
+/* Abierto: las barras se transforman en una X */
+.menuBtn[aria-expanded='true'] span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.menuBtn[aria-expanded='true'] span:nth-child(2) {
+    opacity: 0;
+}
+
+.menuBtn[aria-expanded='true'] span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+@media (min-width: 641px) {
+    .menuBtn {
+        display: none;
+    }
+}
+
+/* --- Panel de navegación mobile --- */
+
+.mobileNav {
+    display: none;
+    background: var(--color-black);
+    border-top: 1px solid var(--color-gray-700);
+}
+
+.mobileNav[data-open='true'] {
+    display: block;
+}
+
+.mobileNav ul {
+    display: flex;
+    flex-direction: column;
+    padding: var(--space-xs) 0;
+}
+
+.mobileNav a {
+    display: block;
+    padding: var(--space-sm) var(--space-md);
+    color: var(--color-white);
+    font-weight: 500;
+    border-left: 3px solid transparent;
+}
+
+.mobileNav a.active {
+    border-left-color: var(--color-yellow);
+    color: var(--color-yellow);
+}
+
+@media (min-width: 641px) {
+    .mobileNav {
+        display: none !important;
+    }
+}

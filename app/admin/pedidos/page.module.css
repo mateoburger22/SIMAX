@@ -1,0 +1,172 @@
+.wrap {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+.empty {
+    padding: var(--space-lg) 0;
+    color: var(--color-gray-500);
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+.row {
+    background: var(--color-white);
+    border: 1px solid var(--color-gray-300);
+    border-left: 4px solid var(--color-yellow);
+    padding: var(--space-sm) var(--space-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+}
+
+.rowMain {
+    display: grid;
+    grid-template-columns: auto 1fr auto auto;
+    gap: var(--space-md);
+    align-items: center;
+}
+
+.rowId {
+    font-weight: 600;
+}
+
+.rowMeta {
+    font-size: var(--fs-xs);
+    color: var(--color-gray-500);
+}
+
+.buyerName {
+    font-weight: 500;
+    color: var(--color-black);
+}
+
+.status {
+    font-size: var(--fs-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.25rem 0.5rem;
+    background: var(--color-gray-100);
+    border: 1px solid var(--color-gray-300);
+    white-space: nowrap;
+}
+
+.status[data-status='pagada'] {
+    background: #d4edda;
+    border-color: #6dad7a;
+    color: #1f6b2c;
+}
+
+.status[data-status='pendiente'] {
+    background: #fff3cd;
+    border-color: #d4a72c;
+    color: #7a5600;
+}
+
+.status[data-status='enviada'] {
+    background: #d6e9f8;
+    border-color: #4a90c4;
+    color: #1d4f75;
+}
+
+.status[data-status='entregada'] {
+    background: #d4edda;
+    border-color: #6dad7a;
+    color: #1f6b2c;
+}
+
+.status[data-status='cancelada'] {
+    background: #fbecea;
+    border-color: #c0392b;
+    color: #8b2018;
+}
+
+.total {
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.rowItems {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2xs) var(--space-sm);
+    padding-top: var(--space-xs);
+    border-top: 1px dashed var(--color-gray-300);
+    font-size: var(--fs-xs);
+    color: var(--color-gray-700);
+}
+
+.mpRef {
+    color: var(--color-gray-500);
+    font-family: monospace;
+}
+
+.statusForm {
+    display: flex;
+    align-items: flex-end;
+    gap: var(--space-xs);
+    padding-top: var(--space-xs);
+    border-top: 1px dashed var(--color-gray-300);
+}
+
+.statusForm label {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2xs);
+}
+
+.statusLabel {
+    font-size: var(--fs-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-gray-700);
+}
+
+.statusForm select {
+    font-family: var(--font-body);
+    font-size: var(--fs-sm);
+    padding: 0.375rem 0.5rem;
+    border: 1px solid var(--color-gray-300);
+    background: var(--color-white);
+}
+
+.statusBtn {
+    font-size: var(--fs-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.5rem 0.875rem;
+    background: var(--color-black);
+    color: var(--color-yellow);
+    border: 1px solid var(--color-black);
+    transition: background var(--transition), color var(--transition);
+}
+
+.statusBtn:hover {
+    background: var(--color-yellow);
+    color: var(--color-black);
+    border-color: var(--color-yellow);
+}
+
+@media (max-width: 640px) {
+    .rowMain {
+        grid-template-columns: 1fr auto;
+    }
+}
+
+/* Aviso de error de una acción (ej: no se pudo cambiar el estado) */
+.errorBanner {
+    background: #fdecea;
+    border: 1px solid #c0392b;
+    color: #922b21;
+    padding: var(--space-xs) var(--space-sm);
+    font-size: var(--fs-sm);
+    font-weight: 500;
+    margin-bottom: var(--space-md);
+}

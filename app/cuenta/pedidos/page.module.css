@@ -1,0 +1,147 @@
+.pageHeader {
+    background: var(--color-white);
+    padding: var(--space-xl) var(--space-sm) var(--space-lg);
+    border-bottom: 1px solid var(--color-gray-300);
+}
+
+.pageHeaderInner {
+    max-width: var(--container);
+    margin: 0 auto;
+}
+
+.pageHeader h1 {
+    margin-top: var(--space-2xs);
+    margin-bottom: 0;
+}
+
+.breadcrumb ol {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2xs) var(--space-xs);
+    font-size: var(--fs-xs);
+    color: var(--color-gray-500);
+    margin-bottom: var(--space-sm);
+}
+
+.breadcrumb li {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+}
+
+.breadcrumb li + li::before {
+    content: '/';
+    color: var(--color-gray-300);
+}
+
+.breadcrumb a:hover {
+    color: var(--color-yellow-dark);
+}
+
+.breadcrumb [aria-current='page'] {
+    color: var(--color-black);
+    font-weight: 500;
+}
+
+.section {
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: var(--space-xl) var(--space-sm);
+}
+
+.empty {
+    text-align: center;
+    padding: var(--space-xl) 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    align-items: center;
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+.row {
+    display: grid;
+    grid-template-columns: 1fr auto auto auto;
+    gap: var(--space-md);
+    align-items: center;
+    background: var(--color-white);
+    border: 1px solid var(--color-gray-300);
+    border-left: 4px solid var(--color-yellow);
+    padding: var(--space-sm) var(--space-md);
+}
+
+.rowId {
+    font-weight: 600;
+}
+
+.rowMeta {
+    font-size: var(--fs-xs);
+    color: var(--color-gray-500);
+}
+
+.status {
+    font-size: var(--fs-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.25rem 0.5rem;
+    background: var(--color-gray-100);
+    border: 1px solid var(--color-gray-300);
+}
+
+.status[data-status='pagada'] {
+    background: #d4edda;
+    border-color: #6dad7a;
+    color: #1f6b2c;
+}
+
+.status[data-status='pendiente'] {
+    background: #fff3cd;
+    border-color: #d4a72c;
+    color: #7a5600;
+}
+
+.status[data-status='cancelada'] {
+    background: #fbecea;
+    border-color: #c0392b;
+    color: #8b2018;
+}
+
+.total {
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+/* Renglones del pedido: ocupan todo el ancho de la card, debajo del resumen */
+.rowItems {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2xs) var(--space-sm);
+    padding-top: var(--space-xs);
+    border-top: 1px dashed var(--color-gray-300);
+    font-size: var(--fs-xs);
+    color: var(--color-gray-700);
+}
+
+.detailLink {
+    color: var(--color-yellow-dark);
+    font-weight: 600;
+    font-size: var(--fs-sm);
+    white-space: nowrap;
+}
+
+@media (max-width: 640px) {
+    .row {
+        grid-template-columns: 1fr auto;
+    }
+
+    .detailLink {
+        grid-column: 1 / -1;
+        text-align: right;
+    }
+}

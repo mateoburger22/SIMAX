@@ -1,0 +1,320 @@
+.pageHeader {
+    background: var(--color-white);
+    padding: var(--space-xl) var(--space-sm) var(--space-lg);
+    border-bottom: 1px solid var(--color-gray-300);
+}
+
+.pageHeaderInner {
+    max-width: var(--container);
+    margin: 0 auto;
+}
+
+.pageHeader h1 {
+    margin-top: var(--space-2xs);
+    margin-bottom: var(--space-sm);
+}
+
+.breadcrumb ol {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2xs) var(--space-xs);
+    font-size: var(--fs-xs);
+    color: var(--color-gray-500);
+    margin-bottom: var(--space-sm);
+}
+
+.breadcrumb li {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+}
+
+.breadcrumb li + li::before {
+    content: '/';
+    color: var(--color-gray-300);
+}
+
+.breadcrumb a:hover {
+    color: var(--color-yellow-dark);
+}
+
+.breadcrumb [aria-current='page'] {
+    color: var(--color-black);
+    font-weight: 500;
+}
+
+/* Layout */
+.section {
+    padding: var(--space-xl) var(--space-sm);
+}
+
+.layout {
+    max-width: var(--container);
+    margin: 0 auto;
+    display: grid;
+    gap: var(--space-lg);
+}
+
+@media (min-width: 900px) {
+    .layout {
+        grid-template-columns: 1fr 340px;
+        align-items: start;
+    }
+}
+
+/* Estado vacío */
+.empty {
+    text-align: center;
+    padding: var(--space-2xl) var(--space-sm);
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.empty h2 {
+    margin-top: var(--space-2xs);
+    margin-bottom: var(--space-sm);
+}
+
+.empty p {
+    margin-bottom: var(--space-md);
+}
+
+/* Lista de items */
+.items {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid var(--color-gray-300);
+}
+
+.item {
+    display: grid;
+    grid-template-columns: 80px 1fr auto auto auto;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-md) 0;
+    border-bottom: 1px solid var(--color-gray-300);
+}
+
+@media (max-width: 599px) {
+    .item {
+        grid-template-columns: 64px 1fr auto;
+        grid-template-rows: auto auto;
+    }
+
+    .info {
+        grid-column: 2 / 4;
+    }
+
+    .qty {
+        grid-column: 1 / 3;
+    }
+
+    .price {
+        grid-column: 3 / 4;
+        text-align: right;
+    }
+
+    .remove {
+        grid-column: 1 / 4;
+        text-align: left;
+    }
+}
+
+.visual {
+    width: 80px;
+    aspect-ratio: 1;
+    background-color: var(--color-gray-100);
+    background-image: repeating-linear-gradient(
+        135deg,
+        transparent 0 8px,
+        rgba(255, 198, 0, 0.12) 8px 16px
+    );
+    border: 1px solid var(--color-gray-300);
+    border-top: 3px solid var(--color-yellow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    overflow: hidden;
+}
+
+@media (max-width: 599px) {
+    .visual {
+        width: 64px;
+    }
+}
+
+.visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 2px;
+}
+
+.sku {
+    font-family: var(--font-display);
+    font-size: var(--fs-xs);
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-yellow-dark);
+    margin-bottom: var(--space-2xs);
+}
+
+.name {
+    font-family: var(--font-display);
+    font-size: var(--fs-md);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    line-height: 1.1;
+    margin-bottom: var(--space-2xs);
+}
+
+.desc {
+    font-size: var(--fs-xs);
+    color: var(--color-gray-500);
+}
+
+.qty {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    border: 1px solid var(--color-gray-300);
+    padding: 0.25rem 0.5rem;
+}
+
+.qtyBtn {
+    font-size: var(--fs-md);
+    font-weight: 600;
+    color: var(--color-black);
+    line-height: 1;
+    padding: 0 0.25rem;
+    transition: color var(--transition);
+}
+
+.qtyBtn:hover {
+    color: var(--color-yellow-dark);
+}
+
+.qtyValue {
+    font-weight: 600;
+    font-size: var(--fs-sm);
+    min-width: 1.5ch;
+    text-align: center;
+}
+
+.price {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: var(--fs-md);
+    color: var(--color-black);
+    white-space: nowrap;
+}
+
+.remove {
+    font-size: var(--fs-xs);
+    font-weight: 500;
+    color: var(--color-gray-500);
+    text-decoration: underline;
+    transition: color var(--transition);
+    padding: 0;
+}
+
+.remove:hover {
+    color: var(--color-black);
+}
+
+.backLink {
+    display: inline-block;
+    margin-top: var(--space-md);
+    font-size: var(--fs-sm);
+    font-weight: 500;
+    color: var(--color-gray-700);
+    transition: color var(--transition);
+}
+
+.backLink:hover {
+    color: var(--color-yellow-dark);
+}
+
+/* Resumen lateral */
+.summary {
+    background: var(--color-gray-100);
+    border: 1px solid var(--color-gray-300);
+    border-top: 4px solid var(--color-yellow);
+    padding: var(--space-md);
+}
+
+@media (min-width: 900px) {
+    .summary {
+        position: sticky;
+        top: calc(var(--header-height) + var(--space-md));
+    }
+}
+
+.summary h2 {
+    font-size: var(--fs-lg);
+    margin-bottom: var(--space-md);
+}
+
+.summaryRows {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    margin-bottom: var(--space-md);
+}
+
+.summaryRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: var(--fs-sm);
+    gap: var(--space-sm);
+}
+
+.summaryRow dt {
+    color: var(--color-gray-700);
+}
+
+.summaryRow dd {
+    font-weight: 600;
+    color: var(--color-black);
+}
+
+.shipping {
+    /* gray-700 (no 500): sobre el panel gris-100 el gris medio quedaba
+       por debajo del contraste AA en texto chico. */
+    color: var(--color-gray-700) !important;
+    font-weight: 400 !important;
+}
+
+.summaryRowTotal {
+    padding-top: var(--space-sm);
+    border-top: 1px solid var(--color-gray-300);
+}
+
+.summaryRowTotal dt {
+    font-family: var(--font-display);
+    font-size: var(--fs-md);
+    font-weight: 700;
+    color: var(--color-black);
+    text-transform: uppercase;
+}
+
+.summaryRowTotal dd {
+    font-family: var(--font-display);
+    font-size: var(--fs-xl);
+    color: var(--color-black);
+}
+
+.note {
+    font-size: var(--fs-xs);
+    color: var(--color-gray-700); /* AA sobre gris-100 en texto chico */
+    margin-bottom: var(--space-md);
+}
+
+.summaryCta {
+    display: block;
+    width: 100%;
+}

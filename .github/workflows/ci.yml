@@ -1,0 +1,42 @@
+# ============================================================================
+# CI de GitHub Actions: corre en cada push a main y en cada Pull Request.
+#
+# División de responsabilidades del pipeline:
+#   · GitHub Actions (este archivo) → calidad de código: ESLint + tests.
+#   · Vercel (conectado al repo)    → build de producción + deploy:
+#       - push a main   → deploy a producción (cimat-itba.vercel.app)
+#       - Pull Request  → PREVIEW deploy con URL propia por PR
+#
+# El build real con las env vars (Supabase, Mercado Pago) lo hace Vercel;
+# acá validamos lo que no necesita secretos.
+# ============================================================================
+
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  quality:
+    name: Lint + Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout del repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Instalar dependencias (npm ci usa el lockfile exacto)
+        run: npm ci
+
+      - name: ESLint
+        run: npm run lint
+
+      - name: Tests unitarios (Vitest)
+        run: npm test

@@ -1,0 +1,79 @@
+/* El botón ocupa todo el marco .visual de la página (position: relative
+   está en el padre). cursor: zoom-in comunica la interacción. */
+.trigger {
+    position: absolute;
+    inset: 0;
+    cursor: zoom-in;
+}
+
+.thumb {
+    object-fit: contain;
+    padding: var(--space-lg);
+}
+
+/* Pista "Ampliar +": aparece al hover o al foco por teclado */
+.hint {
+    position: absolute;
+    right: var(--space-sm);
+    bottom: var(--space-sm);
+    font-size: var(--fs-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    background: var(--color-black);
+    color: var(--color-white);
+    padding: 0.25rem 0.5rem;
+    opacity: 0;
+    transition: opacity var(--transition);
+}
+
+.trigger:hover .hint,
+.trigger:focus-visible .hint {
+    opacity: 1;
+}
+
+/* --- Overlay a pantalla completa --- */
+
+.overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    background: rgba(26, 26, 26, 0.92);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-md);
+    cursor: zoom-out;
+}
+
+.frame {
+    position: relative;
+    width: min(100%, 900px);
+    height: min(100%, 900px);
+}
+
+.full {
+    object-fit: contain;
+}
+
+.close {
+    position: fixed;
+    top: var(--space-sm);
+    right: var(--space-sm);
+    z-index: 101;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--fs-lg);
+    color: var(--color-white);
+    background: var(--color-black);
+    border: 1px solid var(--color-gray-700);
+    transition: color var(--transition), border-color var(--transition);
+}
+
+.close:hover {
+    color: var(--color-yellow);
+    border-color: var(--color-yellow);
+}

@@ -1,0 +1,273 @@
+/* ========================================================================
+   globals.css — Polytape (Next.js)
+   Fusión de reset.css + globals.css del proyecto Vite anterior.
+   Único CSS global de la app — se importa una sola vez desde app/layout.js.
+   Los estilos específicos de cada componente viven en sus *.module.css.
+
+   Las CSS variables --font-inter y --font-barlow las inyecta next/font
+   en el <html className=...> desde layout.js.
+   ======================================================================== */
+
+/* --- Reset minimalista --- */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+img,
+picture,
+svg {
+    display: block;
+    max-width: 100%;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button {
+    font: inherit;
+    color: inherit;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+input,
+button,
+textarea,
+select {
+    font: inherit;
+}
+
+/* --- Variables de marca --- */
+
+:root {
+    /* Colores */
+    --color-yellow:        #FFC600;
+    /* yellow-dark se usa como COLOR DE TEXTO sobre fondos claros (eyebrows,
+       SKUs, hovers). El valor anterior (#E6B400) daba ~1.9:1 de contraste
+       sobre blanco — ilegible e incumple WCAG AA (mínimo 4.5:1). Este dorado
+       oscuro mantiene el tono de marca y da ~5.6:1 sobre blanco. */
+    --color-yellow-dark:   #806400;
+
+    --color-black:         #1A1A1A;
+    --color-gray-900:      #2A2A2A;
+    --color-gray-700:      #4A4A4A;
+    --color-gray-500:      #757575;
+    --color-gray-300:      #D0D0D0;
+    --color-gray-100:      #F5F5F5;
+    --color-white:         #FFFFFF;
+
+    /* Tipografía: usa las CSS variables que genera next/font (--font-inter,
+       --font-barlow). Si no están disponibles, cae al fallback explícito. */
+    --font-display: var(--font-barlow, 'Barlow Condensed'), 'Arial Narrow', sans-serif;
+    --font-body:    var(--font-inter, 'Inter'), system-ui, -apple-system, sans-serif;
+
+    --fs-xs:   0.8125rem;
+    --fs-sm:   1rem;
+    --fs-md:   1.125rem;
+    --fs-lg:   1.5rem;
+    --fs-xl:   2rem;
+    --fs-2xl:  2.75rem;
+    --fs-3xl:  3.75rem;
+
+    /* Espaciado */
+    --space-2xs: 0.25rem;
+    --space-xs:  0.5rem;
+    --space-sm:  1rem;
+    --space-md:  1.5rem;
+    --space-lg:  clamp(1.75rem, 4vw, 2.5rem);
+    --space-xl:  clamp(2.5rem,  6vw, 4rem);
+    --space-2xl: clamp(3rem,    8vw, 6rem);
+
+    /* Layout */
+    --container:        1200px;
+    --container-narrow: 800px;
+
+    /* Header */
+    --header-logo-aspect: 4.05;
+    --header-logo-width:  clamp(100px, 16.67vw, 240px);
+    --header-logo-offset: 0.75rem;
+    --header-height:      max(
+        56px,
+        calc(var(--header-logo-width) / var(--header-logo-aspect) + 0.75rem)
+    );
+
+    /* Otros */
+    --transition: 0.2s ease;
+    --shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.06);
+    --shadow-hover: 0 12px 32px rgba(0, 0, 0, 0.12);
+}
+
+/* --- Estilos base --- */
+
+/* Sticky footer: el body es flex column de altura mínima 100vh, y el <main>
+   crece para empujar el footer al fondo en páginas con poco contenido. */
+body {
+    font-family: var(--font-body);
+    font-size: var(--fs-sm);
+    color: var(--color-black);
+    background: var(--color-white);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+}
+
+h1,
+h2,
+h3 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    line-height: 1.05;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+}
+
+h1 { font-size: var(--fs-2xl); }
+h2 { font-size: var(--fs-xl); }
+h3 { font-size: var(--fs-lg); }
+
+@media (min-width: 768px) {
+    h1 { font-size: var(--fs-3xl); }
+    h2 { font-size: var(--fs-2xl); }
+}
+
+p {
+    color: var(--color-gray-700);
+}
+
+/* --- Accesibilidad --- */
+
+.skip-link {
+    position: absolute;
+    top: -100px;
+    left: 0;
+    background: var(--color-black);
+    color: var(--color-yellow);
+    padding: var(--space-xs) var(--space-sm);
+    font-weight: 600;
+    z-index: 100;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible {
+    outline: 2px solid var(--color-yellow);
+    outline-offset: 3px;
+}
+
+/* Texto solo para lectores de pantalla: invisible pero presente en el
+   árbol de accesibilidad (lo usa, p. ej., la región viva del carrito). */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* --- Utilidades globales (no encajan en CSS Modules porque rompen el scope) --- */
+
+.eyebrow {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: var(--fs-sm);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--color-yellow-dark);
+    margin-bottom: var(--space-xs);
+}
+
+/* --- Botones globales --- */
+
+.btn {
+    display: inline-block;
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: var(--fs-sm);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 0.875rem 1.75rem;
+    border: 2px solid transparent;
+    transition: all var(--transition);
+    cursor: pointer;
+    text-align: center;
+}
+
+.btn-primary {
+    background: var(--color-yellow);
+    color: var(--color-black);
+    border-color: var(--color-yellow);
+}
+
+.btn-primary:hover {
+    background: var(--color-black);
+    color: var(--color-yellow);
+    border-color: var(--color-black);
+}
+
+.btn-outline {
+    background: transparent;
+    color: var(--color-black);
+    border-color: var(--color-black);
+}
+
+.btn-outline:hover {
+    background: var(--color-black);
+    color: var(--color-white);
+}
+
+.btn-outline-light {
+    background: transparent;
+    color: var(--color-white);
+    border-color: var(--color-white);
+}
+
+.btn-outline-light:hover {
+    background: var(--color-white);
+    color: var(--color-black);
+}
+
+.btn-dark {
+    background: var(--color-black);
+    color: var(--color-yellow);
+    border-color: var(--color-black);
+}
+
+.btn-dark:hover {
+    background: var(--color-white);
+    color: var(--color-black);
+    border-color: var(--color-white);
+}
