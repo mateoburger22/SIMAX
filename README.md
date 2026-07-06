@@ -1,18 +1,6 @@
-# Polytape — CIMAT
+# SIMAX
 
 Ecommerce de cintas adhesivas industriales: reparación con fibra de vidrio activada con agua, aislación eléctrica, sellado de tuberías y aplicaciones de alta temperatura.
-
-**Demo en producción:** https://cimat-itba.vercel.app
-
-## Sobre el proyecto
-
-Proyecto de la materia **71.38 Programación Web** (Q1 2026, ITBA). El desarrollo se hizo progresivamente, siguiendo las fases del programa:
-
-1. **Fase 1** — HTML semántico + CSS (estructura y estilo) ✅
-2. **Fase 2** — JavaScript (funcionalidad e interactividad) ✅
-3. **Fase 3** — Migración a React (componentes y estado) ✅
-4. **Fase 4** — Migración a **Next.js** (App Router, rutas dinámicas, SSG) ✅
-5. **Fase 5** — Backend: Supabase (BD + auth + RLS), panel admin y **Mercado Pago** ✅
 
 ## Stack
 
@@ -58,7 +46,7 @@ Copiá `.env.local.example` a `.env.local` y completá:
 ## Arquitectura
 
 ```
-Polytape/
+SIMAX/
 ├── app/                          # App Router — una carpeta por ruta
 │   ├── layout.js                 # raíz: <html>, fonts, Header, Footer, CartProvider
 │   ├── page.js                   # /  (Home)
@@ -86,10 +74,7 @@ Polytape/
 │   ├── adminAuth.js              # helper: ¿la sesión es de un admin?
 │   └── productos.js              # data access del catálogo
 ├── data/productos.js             # metadata de UI (líneas) + formatPrice
-├── docs/
-│   ├── prompts/                  # log de cada sesión con IA (entregable de la materia)
-│   ├── supabase/                 # SQL versionado: schema, RLS, triggers, seeds
-│   └── rubrica-checklist.md      # mapeo rúbrica → evidencia en el código
+├── docs/supabase/                # SQL versionado: schema, RLS, triggers, seeds
 ├── tests/                        # tests unitarios (Vitest)
 ├── proxy.js                      # middleware de Next 16: refresca la sesión Supabase
 └── .github/
@@ -97,7 +82,7 @@ Polytape/
     └── PULL_REQUEST_TEMPLATE.md  # checklist de PR
 ```
 
-## Decisiones de seguridad (resumen para la defensa)
+## Decisiones de seguridad (resumen)
 
 - **RLS en todas las tablas**: cada usuario solo ve/edita lo suyo; el admin se
   verifica con `is_admin()` en Postgres, no solo en la UI.
@@ -111,10 +96,3 @@ Polytape/
   nunca importados desde Client Components.
 - **XSS**: la descripción de producto (renderizada con `dangerouslySetInnerHTML`)
   pasa por una lista blanca que solo admite `<strong>`/`<em>`.
-
-## Carpeta `docs/`
-
-- **`docs/prompts/`** — registro de los prompts usados con IA (entregable de la materia).
-- **`docs/supabase/`** — todo el SQL aplicado al proyecto, numerado y versionado.
-- **`docs/rubrica-checklist.md`** — cada criterio de la rúbrica y dónde está resuelto.
-- **`docs/presentacion/`** — material para la defensa oral.
